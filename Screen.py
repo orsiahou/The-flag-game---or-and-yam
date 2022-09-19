@@ -24,17 +24,17 @@ def grass_screen_stam():
 
 
 def random_grass():
-    my_list= []
+    my_list = []
     small_list = []
     for i in range(20):
-        x = random.randint(0,47)
-        y = random.randint(0,23)
+        x = random.randint(0, 47)
+        y = random.randint(0, 23)
         while x == 0 and (y == 0 or y == 1) or x == 1 and (y == 0 or y == 1):
             x = random.randint(0, 47)
             y = random.randint(0, 23)
         while x == 22 and (y == 46 or y == 47 or y == 48 or y == 49) or \
-            x == 23 and (y == 46 or y == 47 or y == 48 or y == 49) \
-            or x == 24 and (y == 46 or y == 47 or y == 48 or y == 49):
+                x == 23 and (y == 46 or y == 47 or y == 48 or y == 49) \
+                or x == 24 and (y == 46 or y == 47 or y == 48 or y == 49):
             x = random.randint(0, 47)
             y = random.randint(0, 23)
         small_list.append(x)
@@ -46,7 +46,7 @@ def random_grass():
 
 def index_to_px(my_list):
     list_px = []
-    small_list_px =[]
+    small_list_px = []
     for i in range(20):
         x = my_list[i][0] * 20
         small_list_px.append(x)
@@ -83,6 +83,7 @@ def print_welcome_text(screen):
     have_fun_text = const.WELCOME_FONT.render("Have Fun!", 1, const.WHITE)
     screen.blit(welcome_text, (40, 10))
     screen.blit(have_fun_text, (40, 40))
+
 
 
 def print_table(screen):
@@ -140,6 +141,7 @@ def grass_screen2():
                 finish = True
 
 
+
 def grid_screen():
     screen = pygame.display.set_mode(const.size)
     pygame.display.set_caption("The Flag Game")
@@ -152,13 +154,7 @@ def grid_screen():
     player2_img.set_colorkey(const.BLACK)
     screen.blit(player2_img, (0, 0))
     pygame.display.flip()
-
-    finish = False
-    while not finish:
-        # clock.tick(FPS)
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                finish = True
+    pygame.time.wait(1000)
 
 
 
