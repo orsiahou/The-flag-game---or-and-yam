@@ -6,7 +6,7 @@ def where_solider():
     index = []
     for i in range(const.NUM_OF_ROWS):
         for j in range(const.NUM_OF_COLS):
-            if const.matrix[i][j] == const.SOLIDER:
+            if const.solider_matrix[i][j] == const.SOLIDER:
                 index.append([i, j])
     return index
 
@@ -42,17 +42,93 @@ def can_move_left():
 def move():
     if mainField.where_to_go() == const.UP and can_move_up():
         for i in range(len(where_solider())):
-            const.matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
-            const.matrix[where_solider()[i][0] + 1][where_solider()[i][1]] = const.SOLIDER
+            const.solider_matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
+            const.solider_matrix[where_solider()[i][0] - 1][where_solider()[i][1]] = const.SOLIDER
     if mainField.where_to_go() == const.DOWN and can_move_down():
         for i in range(len(where_solider())):
-            const.matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
-            const.matrix[where_solider()[i][0] - 1][where_solider()[i][1]] = const.SOLIDER
+            const.solider_matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
+            const.solider_matrix[where_solider()[i][0] + 1][where_solider()[i][1]] = const.SOLIDER
     if mainField.where_to_go() == const.RIGHT and can_move_right():
         for i in range(len(where_solider())):
-            const.matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
-            const.matrix[where_solider()[i][0]][where_solider()[i][1] + 1] = const.SOLIDER
+            const.solider_matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
+            const.solider_matrix[where_solider()[i][0]][where_solider()[i][1] + 1] = const.SOLIDER
     if mainField.where_to_go() == const.LEFT and can_move_left():
         for i in range(len(where_solider())):
-            const.matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
-            const.matrix[where_solider()[i][0]][where_solider()[i][1] - 1] = const.SOLIDER
+            const.solider_matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
+            const.solider_matrix[where_solider()[i][0]][where_solider()[i][1] - 1] = const.SOLIDER
+
+
+def index_of_Rleg(where_is_solider):
+    index_Rleg = where_is_solider()[7]
+    return index_Rleg
+
+
+def index_of_Lleg(where_is_solider):
+    index_Lleg = where_is_solider()[6]
+    return index_Lleg
+
+
+def index_of_Rhead(where_is_solider):
+    index_Rhead = where_is_solider()[1]
+    return index_Rhead
+
+
+def index_of_Lhead(where_is_solider):
+    index_Lhead = where_is_solider()[0]
+    return index_Lhead
+
+
+def index_of_Rsholder(where_is_solider):
+    index_Rsholder = where_is_solider()[3]
+    return index_Rsholder
+
+
+def index_of_Lsholder(where_is_solider):
+    index_Lsholder = where_is_solider()[2]
+    return index_Lsholder
+
+
+def step_on_bomb():
+    if mainField.where_to_go() == const.UP and can_move_up():
+        if const.matrix[index_of_Lleg()[0] - 1][index_of_Lleg()[1]] == const.BOOM or \
+           const.matrix[index_of_Rleg()[0] - 1][index_of_Rleg()[1]] == const.BOOM :
+            return True
+    if mainField.where_to_go() == const.DOWN and can_move_down():
+        if const.matrix[index_of_Lleg()[0] + 1][index_of_Lleg()[1]] == const.BOOM or \
+           const.matrix[index_of_Rleg()[0] + 1][index_of_Rleg()[1]] == const.BOOM:
+            return True
+    if  mainField.where_to_go() == const.RIGHT and can_move_right():
+        if const.matrix[index_of_Lleg()[0]][index_of_Lleg()[1] + 1] == const.BOOM or \
+           const.matrix[index_of_Rleg()[0]][index_of_Rleg()[1] + 1] == const.BOOM:
+            return True
+    if  mainField.where_to_go() == const.LEFT and can_move_left():
+        if const.matrix[index_of_Lleg()[0]][index_of_Lleg()[1] - 1] == const.BOOM or \
+           const.matrix[index_of_Rleg()[0]][index_of_Rleg()[1] - 1] == const.BOOM:
+            return True
+
+
+def step_on_flag():
+    if mainField.where_to_go() == const.DOWN and can_move_down():
+        count = 0
+        if const.matrix[index_of_Rhead()[0] + 1][index_of_Rhead()[1]] == const.FLAG:
+            count +=1
+        if const.matrix[index_of_Lhead()[0] + 1][index_of_Lhead()[1]] == const.FLAG:
+            count +=1
+        if const.matrix[index_of_Rsholder()[0] + 1][index_of_Rsholder()[1]] == const.FLAG:
+            count +=1
+        if const.matrix[index_of_Lsholder()[0] + 1][index_of_Lsholder()[1]] == const.FLAG:
+            count +=1
+        if count >=2:
+            return True
+    if mainField.where_to_go() == const.RIGHT and can_move_right():
+        count = 0
+        if const.matrix[index_of_Rhead()[0]][index_of_Rhead()[1]+1] == const.FLAG:
+            count +=1
+        if const.matrix[index_of_Lhead()[0]][index_of_Lhead()[1] +1] == const.FLAG:
+            count +=1
+        if const.matrix[index_of_Rsholder()[0]][index_of_Rsholder()[1] +1] == const.FLAG:
+            count +=1
+        if const.matrix[index_of_Lsholder()[0]][index_of_Lsholder()[1] +1] == const.FLAG:
+            count +=1
+        if count >=2:
+            return True

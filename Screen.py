@@ -3,7 +3,7 @@ import const
 import random
 
 
-def grass_screen():
+def grass_screen_stam():
     # FPS = 60
     # clock = pygame.time.Clock()
     screen = pygame.display.set_mode(const.size)
@@ -59,6 +59,9 @@ def input_grass(my_list, screen, grass_img):
     for i in range(20):
         screen.blit(grass_img, [my_list[i][0], my_list[i][1]])
         pygame.display.flip()
+
+
+
 
 
 def normal_screen():
