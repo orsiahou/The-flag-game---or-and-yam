@@ -3,7 +3,7 @@ import const
 import random
 from tabulate import tabulate
 
-def grass_screen():
+def grass_screen_stam():
     # FPS = 60
     # clock = pygame.time.Clock()
     screen = pygame.display.set_mode(const.size)
@@ -50,7 +50,7 @@ def input_grass(list, screen, grass_img):
         screen.blit(grass_img, [list[i][0],list[i][1]])
         pygame.display.flip()
 
-def normal_screen():
+def normal_screen_stam():
     FPS = 60
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode(const.size)
