@@ -3,7 +3,7 @@ import pygame
 pygame.font.init()
 
 WELCOME_FONT = pygame.font.SysFont("comicsans", 20)
-TEXT_FONT = pygame.font.SysFont("comicsans", 200)
+TEXT_FONT = pygame.font.SysFont("comicsans", 100)
 
 BACKGROUND_COLOR = (60, 156, 54)
 WHITE = (255, 255, 255)
