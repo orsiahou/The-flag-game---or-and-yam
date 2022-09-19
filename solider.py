@@ -90,20 +90,20 @@ def index_of_Lsholder(where_is_solider):
 
 def step_on_bomb():
     if mainField.where_to_go() == const.UP and can_move_up():
-        if const.matrix[index_of_Lleg()[0] - 1][index_of_Lleg()[1]] == const.BOOM or \
-           const.matrix[index_of_Rleg()[0] - 1][index_of_Rleg()[1]] == const.BOOM :
+        if const.matrix[index_of_Lleg()[0]][index_of_Lleg()[1]] == const.BOOM or \
+           const.matrix[index_of_Rleg()[0]][index_of_Rleg()[1]] == const.BOOM :
             return True
     if mainField.where_to_go() == const.DOWN and can_move_down():
-        if const.matrix[index_of_Lleg()[0] + 1][index_of_Lleg()[1]] == const.BOOM or \
-           const.matrix[index_of_Rleg()[0] + 1][index_of_Rleg()[1]] == const.BOOM:
+        if const.matrix[index_of_Lleg()[0]][index_of_Lleg()[1]] == const.BOOM or \
+           const.matrix[index_of_Rleg()[0]][index_of_Rleg()[1]] == const.BOOM:
             return True
     if  mainField.where_to_go() == const.RIGHT and can_move_right():
-        if const.matrix[index_of_Lleg()[0]][index_of_Lleg()[1] + 1] == const.BOOM or \
-           const.matrix[index_of_Rleg()[0]][index_of_Rleg()[1] + 1] == const.BOOM:
+        if const.matrix[index_of_Lleg()[0]][index_of_Lleg()[1]] == const.BOOM or \
+           const.matrix[index_of_Rleg()[0]][index_of_Rleg()[1]] == const.BOOM:
             return True
     if  mainField.where_to_go() == const.LEFT and can_move_left():
-        if const.matrix[index_of_Lleg()[0]][index_of_Lleg()[1] - 1] == const.BOOM or \
-           const.matrix[index_of_Rleg()[0]][index_of_Rleg()[1] - 1] == const.BOOM:
+        if const.matrix[index_of_Lleg()[0]][index_of_Lleg()[1]] == const.BOOM or \
+           const.matrix[index_of_Rleg()[0]][index_of_Rleg()[1]] == const.BOOM:
             return True
 
 
@@ -122,13 +122,13 @@ def step_on_flag():
             return True
     if mainField.where_to_go() == const.RIGHT and can_move_right():
         count = 0
-        if const.matrix[index_of_Rhead()[0]][index_of_Rhead()[1]+1] == const.FLAG:
+        if const.matrix[index_of_Rhead()[0]][index_of_Rhead()[1] + 1] == const.FLAG:
             count +=1
-        if const.matrix[index_of_Lhead()[0]][index_of_Lhead()[1] +1] == const.FLAG:
+        if const.matrix[index_of_Lhead()[0]][index_of_Lhead()[1] + 1] == const.FLAG:
             count +=1
-        if const.matrix[index_of_Rsholder()[0]][index_of_Rsholder()[1] +1] == const.FLAG:
+        if const.matrix[index_of_Rsholder()[0]][index_of_Rsholder()[1] + 1] == const.FLAG:
             count +=1
-        if const.matrix[index_of_Lsholder()[0]][index_of_Lsholder()[1] +1] == const.FLAG:
+        if const.matrix[index_of_Lsholder()[0]][index_of_Lsholder()[1] + 1] == const.FLAG:
             count +=1
         if count >=2:
             return True
