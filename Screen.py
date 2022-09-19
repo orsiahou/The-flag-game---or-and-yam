@@ -118,15 +118,15 @@ def losser(screen):
     injury_image.set_colorkey(const.BLACK)
     screen.blit(injury_image, (in_to_px(solider.where_solider()[0])[0], in_to_px(solider.where_solider()[0])[1]))
 
-def grass_screen2():
+def grass_screen2(screen):
     # FPS = 60
     # clock = pygame.time.Clock()
-    screen = pygame.display.set_mode(const.size)
     pygame.display.set_caption("The Flag Game")
     screen.fill(const.BACKGROUND_COLOR)
     grass_img = pygame.image.load('grassnew.png').convert()
     grass_img.set_colorkey(const.BLACK)
     input_grass(index_to_px(random_grass()), screen, grass_img)
+    move_solider(screen)
     print_welcome_text(screen)
     flag_img = pygame.image.load('flag.png').convert()
     flag_img.set_colorkey(const.BLACK)
