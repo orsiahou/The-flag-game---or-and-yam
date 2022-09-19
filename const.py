@@ -1,6 +1,14 @@
 import mainField
+import pygame
+pygame.font.init()
+
+WELCOME_FONT = pygame.font.SysFont("comicsans", 20)
+TEXT_FONT = pygame.font.SysFont("comicsans", 200)
 
 BACKGROUND_COLOR = (60, 156, 54)
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+
 WINDOW_HEIGHT = 600
 WINDOW_WIDTH = 1000
 NUM_OF_ROWS = 25
