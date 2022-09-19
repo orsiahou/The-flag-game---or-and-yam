@@ -58,24 +58,33 @@ def move():
             const.solider_matrix[where_solider()[i][0]][where_solider()[i][1] - 1] = const.SOLIDER
 
 def move_right():
-    for i in range(len(where_solider())):
-        const.solider_matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
-        const.solider_matrix[where_solider()[i][0]][where_solider()[i][1] + 1] = const.SOLIDER
+    solider_index = where_solider()
+    for i in range(len(solider_index)):
+        if i % 2 == 0:
+            const.solider_matrix[solider_index[i][0]][solider_index[i][1]] = const.EMPTY_CELL
+            const.solider_matrix[solider_index[i][0]][solider_index[i][1] + 2] = const.SOLIDER
+
 
 def move_left():
-    for i in range(len(where_solider())):
-        const.solider_matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
-        const.solider_matrix[where_solider()[i][0]][where_solider()[i][1] - 1] = const.SOLIDER
+    solider_index = where_solider()
+    for i in range(len(solider_index)):
+        if i % 2 != 0:
+            const.solider_matrix[solider_index[i][0]][solider_index[i][1]] = const.EMPTY_CELL
+            const.solider_matrix[solider_index[i][0]][solider_index[i][1] - 2] = const.SOLIDER
+
 
 def move_up():
-    for i in range(len(where_solider())):
-        const.solider_matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
-        const.solider_matrix[where_solider()[i][0] - 1][where_solider()[i][1]] = const.SOLIDER
+    solider_index = where_solider()
+    for i in range(2):
+            const.solider_matrix[solider_index[i][0]][solider_index[i][1]] = const.EMPTY_CELL
+            const.solider_matrix[solider_index[i][0] - 4][solider_index[i][1]] = const.SOLIDER
+
 
 def move_down():
-    for i in range(len(where_solider())):
-        const.solider_matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
-        const.solider_matrix[where_solider()[i][0] + 1][where_solider()[i][1]] = const.SOLIDER
+    solider_index = where_solider()
+    for i in range(2, len(solider_index)):
+        const.solider_matrix[solider_index[i][0]][solider_index[i][1]] = const.EMPTY_CELL
+        const.solider_matrix[solider_index[i][0] + 4][solider_index[i][1]] = const.SOLIDER
 
 
 
