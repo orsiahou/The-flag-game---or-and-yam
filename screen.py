@@ -106,6 +106,7 @@ def move_solider(screen):
     player_img.set_colorkey(const.BLACK)
     index = in_to_px(solider.where_solider()[0])
     screen.blit(player_img, (index[0], index[1]))
+    pygame.display.flip()
 
 
 def losser(screen):
@@ -119,16 +120,18 @@ def losser(screen):
     injury_image = pygame.load('injury.png').convert()
     injury_image.set_colorkey(const.BLACK)
     screen.blit(injury_image, (in_to_px(solider.where_solider()[0])[0], in_to_px(solider.where_solider()[0])[1]))
+    pygame.display.flip()
 
 mainField.solider_matrix()
 def grass_screen2(screen):
     # FPS = 60
     # clock = pygame.time.Clock()
+    random_list = index_to_px(random_grass())
     pygame.display.set_caption("The Flag Game")
     screen.fill(const.BACKGROUND_COLOR)
     grass_img = pygame.image.load('../grassnew.png').convert()
     grass_img.set_colorkey(const.BLACK)
-    input_grass(index_to_px(random_grass()), screen, grass_img)
+    input_grass(random_list, screen, grass_img)
     move_solider(screen)
     print_welcome_text(screen)
     flag_img = pygame.image.load('../flag.png').convert()
@@ -160,12 +163,13 @@ def open_grid_screen():
 
 
 def win(screen):
-    if solider.step_on_flag():
-        win_text = const.TEXT_FONT.render("You win", 1, const.WHITE)
-        screen.blit(win_text, (300, 250))
+    win_text = const.TEXT_FONT.render("You win", 1, const.WHITE)
+    screen.blit(win_text, (300, 250))
+    pygame.display.flip()
+
 
 
 def loss(screen):
-    if solider.step_on_bomb():
-        loss_text = const.TEXT_FONT.render("You loss", 1, const.WHITE)
-        screen.blit(loss_text, (300, 250))
+    loss_text = const.TEXT_FONT.render("You loss", 1, const.WHITE)
+    screen.blit(loss_text, (300, 250))
+    pygame.display.flip()
