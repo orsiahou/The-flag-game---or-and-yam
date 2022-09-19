@@ -23,6 +23,7 @@ def put_flag():
 #         for j in range(row, row + 2):
 #             const.matrix[row][col] = const.TREE
 
+
 def put_boom(my_list):
     for i in range(len(my_list)):
         row = my_list[i][0]
@@ -61,6 +62,33 @@ def want_to_show_boom():
                 return True
     return False
 
+
+def touch_flag():
+    mini_list = []
+    index_list = []
+    for i in range(const.NUM_OF_ROWS):
+        for j in range(const.NUM_OF_COLS):
+            if const.matrix[i][j] != const.FLAG and (
+                    const.matrix[i - 1][j] == const.FLAG or const.matrix[i][j + 1] == const.FLAG):
+                mini_list.append(i)
+                mini_list.append(j)
+        index_list.append(mini_list.copy())
+        mini_list.clear()
+    return index_list
+
+def touch_boom():
+    mini_list = []
+    index_list = []
+    for i in range(const.NUM_OF_ROWS):
+        for j in range(const.NUM_OF_COLS):
+            if const.matrix[i][j] != const.BOOM and (
+                    const.matrix[i - 1][j] == const.BOOM or const.matrix[i][j + 1] == const.BOOM):
+                mini_list.append(i)
+                mini_list.append(j)
+        index_list.append(mini_list.copy())
+        mini_list.clear()
+    return index_list
+
 #
 # def touch_flag():
 #     mini_list = []
@@ -85,3 +113,4 @@ def want_to_show_boom():
 #         index_list.append(mini_list.copy())
 #         mini_list.clear()
 #     return index_list
+

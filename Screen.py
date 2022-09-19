@@ -3,6 +3,8 @@ import const
 import random
 import mainField
 import solider
+
+
 def grass_screen_stam():
     # FPS = 60
     # clock = pygame.time.Clock()
@@ -61,9 +63,6 @@ def input_grass(my_list, screen, grass_img):
         pygame.display.flip()
 
 
-
-
-
 def normal_screen():
     FPS = 60
     clock = pygame.time.Clock()
@@ -94,15 +93,24 @@ def print_table(screen):
     pygame.display.flip()
 
 
+def in_to_px(my_list):
+    new_list = []
+    new_list.append(my_list[0] * 20)
+    new_list.append(my_list[1] * 24)
+
+
+def move_solider(screen):
+    player_img = pygame.image.load('player.png').convert()
+    player_img.set_colorkey(const.BLACK)
+    screen.blit(player_img, (in_to_px(solider.where_solider()[0])[0],in_to_px(solider.where_solider()[0])[1]))
+
+
 def grass_screen2():
     # FPS = 60
     # clock = pygame.time.Clock()
     screen = pygame.display.set_mode(const.size)
     pygame.display.set_caption("The Flag Game")
     screen.fill(const.BACKGROUND_COLOR)
-    player_img = pygame.image.load('player.png').convert()
-    player_img.set_colorkey(const.BLACK)
-    screen.blit(player_img, (0, 0))
     grass_img = pygame.image.load('grassnew.png').convert()
     grass_img.set_colorkey(const.BLACK)
     input_grass(index_to_px(random_grass()), screen, grass_img)
