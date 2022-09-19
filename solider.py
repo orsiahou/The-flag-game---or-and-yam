@@ -57,6 +57,27 @@ def move():
             const.solider_matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
             const.solider_matrix[where_solider()[i][0]][where_solider()[i][1] - 1] = const.SOLIDER
 
+def move_right():
+    for i in range(len(where_solider())):
+        const.solider_matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
+        const.solider_matrix[where_solider()[i][0]][where_solider()[i][1] + 1] = const.SOLIDER
+
+def move_left():
+    for i in range(len(where_solider())):
+        const.solider_matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
+        const.solider_matrix[where_solider()[i][0]][where_solider()[i][1] - 1] = const.SOLIDER
+
+def move_up():
+    for i in range(len(where_solider())):
+        const.solider_matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
+        const.solider_matrix[where_solider()[i][0] - 1][where_solider()[i][1]] = const.SOLIDER
+
+def move_down():
+    for i in range(len(where_solider())):
+        const.solider_matrix[where_solider()[i][0]][where_solider()[i][1]] = const.EMPTY_CELL
+        const.solider_matrix[where_solider()[i][0] + 1][where_solider()[i][1]] = const.SOLIDER
+
+
 
 def index_of_Rleg(where_is_solider):
     index_Rleg = where_is_solider()[7]
