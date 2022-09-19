@@ -10,7 +10,7 @@ mainField.solider_matrix()
 while not finish:
     Screen.grass_screen2(screen)
 
-    solider.move(screen)
+    solider.move()
     if solider.step_on_bomb():
         Screen.losser(screen)
         Screen.loss(screen)
