@@ -136,12 +136,6 @@ def grass_screen2(screen):
     screen.blit(flag_img, (920, 528))
 
     pygame.display.flip()
-    finish = False
-    while not finish:
-        # clock.tick(FPS)
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                finish = True
 
 
 def grid_screen():
@@ -175,30 +169,3 @@ def loss(screen):
     if solider.step_on_bomb():
         loss_text = const.TEXT_FONT.render("You loss", 1, const.WHITE)
         screen.blit(loss_text, (300, 250))
-
-
-def screen_main():
-
-    finish_the_game = False
-    screen = pygame.display.set_mode(const.size)
-
-    mainField.solider_matrix()
-    grass_screen2(screen)
-    for event in pygame.event.get():
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RIGHT:
-                print('111')
-
-
-    solider.move()
-    if solider.step_on_bomb():
-        losser(screen)
-        loss(screen)
-        finish = True
-    if solider.step_on_flag():
-        win(screen)
-        finish = True
-    if mainField.want_to_show_boom():
-        grid_screen(screen)
-
-screen_main()
