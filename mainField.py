@@ -17,12 +17,12 @@ def start_matrix():
     return matrix
 
 
-def put_trees(my_list):
-    for i in range(len(list)):
-        row = my_list[i][0]
-        col = my_list[i][1]
-        for j in range(row, row + 2):
-            const.matrix[row][col] = const.TREE
+#def put_trees(my_list):
+    #for i in range(len(list)):
+        #row = my_list[i][0]
+        #col = my_list[i][1]
+        #for j in range(row, row + 2):
+            #const.matrix[row][col] = const.TREE
 
 def put_boom(my_list):
     for i in range(len(my_list)):
@@ -32,7 +32,7 @@ def put_boom(my_list):
             const.matrix[row][j] = const.BOOM
 
 def game_matrix(trees_list, boom_list):
-    put_trees(trees_list)
+    #put_trees(trees_list)
     put_boom(boom_list)
 
 
@@ -62,7 +62,8 @@ def touch_flag():
     index_list = []
     for i in range(const.NUM_OF_ROWS):
         for j in range(const.NUM_OF_COLS):
-            if const.matrix[i][j] != const.FLAG and (const.matrix[i-1][j] == const.FLAG or const.matrix[i][j+1] == const.FLAG):
+            if const.matrix[i][j] != const.FLAG and (
+                    const.matrix[i - 1][j] == const.FLAG or const.matrix[i][j + 1] == const.FLAG):
                 mini_list.append(i)
                 mini_list.append(j)
         index_list.append(mini_list.copy())
@@ -74,7 +75,8 @@ def touch_boom():
     index_list = []
     for i in range(const.NUM_OF_ROWS):
         for j in range(const.NUM_OF_COLS):
-            if const.matrix[i][j] != const.BOOM and (const.matrix[i - 1][j] == const.BOOM or const.matrix[i][j + 1] == const.BOOM):
+            if const.matrix[i][j] != const.BOOM and (
+                    const.matrix[i - 1][j] == const.BOOM or const.matrix[i][j + 1] == const.BOOM):
                 mini_list.append(i)
                 mini_list.append(j)
         index_list.append(mini_list.copy())
