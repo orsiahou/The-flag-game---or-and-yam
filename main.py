@@ -14,6 +14,6 @@ while not finish:
         Screen.loss()
     if solider.step_on_flag():
         Screen.win()
-    if
+    
 
 

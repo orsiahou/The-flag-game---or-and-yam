@@ -105,6 +105,18 @@ def move_solider(screen):
     screen.blit(player_img, (in_to_px(solider.where_solider()[0])[0],in_to_px(solider.where_solider()[0])[1]))
 
 
+def losser(screen):
+    explotion_image = pygame.load('explotion.png').convert()
+    explotion_image.set_colorkey(const.BLACK)
+    if const.matrix[solider.index_of_Lleg()[0]][solider.index_of_Lleg()[1]] == const.BOOM:
+        index = [const.matrix[solider.index_of_Lleg()[0]], const.matrix[solider.index_of_Lleg()[1]]]
+    if const.matrix[solider.index_of_Rleg()[0]][solider.index_of_Rleg()[1]] == const.BOOM:
+        index = [const.matrix[solider.index_of_Rleg()[0]], const.matrix[solider.index_of_Rleg()[1]]]
+    screen.blit(explotion_image, in_to_px(index))
+    injury_image = pygame.load('injury.png').convert()
+    injury_image.set_colorkey(const.BLACK)
+    screen.blit(injury_image, (in_to_px(solider.where_solider()[0])[0], in_to_px(solider.where_solider()[0])[1]))
+
 def grass_screen2():
     # FPS = 60
     # clock = pygame.time.Clock()
@@ -148,8 +160,6 @@ def grid_screen():
             if event.type == pygame.QUIT:
                 finish = True
 
-
-grid_screen()
 
 
 def open_grid_screen():
