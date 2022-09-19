@@ -7,7 +7,9 @@ def start_matrix():
     for i in range(const.NUM_OF_ROWS):
         for j in range(const.NUM_OF_COLS):
             row.append(const.EMPTY_CELL)
-        matrix.append(row)
+        matrix.append(row.copy())
+        row.clear()
+
     return matrix
 
 
