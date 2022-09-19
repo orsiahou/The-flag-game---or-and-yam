@@ -8,21 +8,20 @@ def start_matrix():
         for j in range(const.NUM_OF_COLS):
             row.append(const.EMPTY_CELL)
         matrix.append(row)
-    for i in range(const.NUM_OF_ROWS - 3, const.NUM_OF_ROWS):
-        for j in range(const.NUM_OF_COLS - 4, const.NUM_OF_COLS):
-            matrix[i][j] = const.FLAG
-    for i in range(4):
-        for j in range(2):
-            matrix[i][j] == const.SOLIDER
     return matrix
 
 
-def put_trees(my_list):
-    for i in range(len(list)):
-        row = my_list[i][0]
-        col = my_list[i][1]
-        for j in range(row, row + 2):
-            const.matrix[row][col] = const.TREE
+def put_flag():
+    for i in range(const.NUM_OF_ROWS - 3, const.NUM_OF_ROWS):
+        for j in range(const.NUM_OF_COLS - 4, const.NUM_OF_COLS):
+            const.matrix[i][j] = const.FLAG
+#
+# def put_trees(my_list):
+#     for i in range(len(list)):
+#         row = my_list[i][0]
+#         col = my_list[i][1]
+#         for j in range(row, row + 2):
+#             const.matrix[row][col] = const.TREE
 
 def put_boom(my_list):
     for i in range(len(my_list)):
@@ -31,9 +30,15 @@ def put_boom(my_list):
         for j in range(col, col + 3):
             const.matrix[row][j] = const.BOOM
 
+def solider_matrix():
+    for i in range(4):
+        for j in range(2):
+            const.solider_matrix[i][j] == const.SOLIDER
+
 def game_matrix(trees_list, boom_list):
-    put_trees(trees_list)
+    # put_trees(trees_list)
     put_boom(boom_list)
+    put_flag()
 
 
 def where_to_go():
@@ -56,27 +61,27 @@ def want_to_show_boom():
                 return True
     return False
 
-
-def touch_flag():
-    mini_list = []
-    index_list = []
-    for i in range(const.NUM_OF_ROWS):
-        for j in range(const.NUM_OF_COLS):
-            if const.matrix[i][j] != const.FLAG and (const.matrix[i-1][j] == const.FLAG or const.matrix[i][j+1] == const.FLAG):
-                mini_list.append(i)
-                mini_list.append(j)
-        index_list.append(mini_list.copy())
-        mini_list.clear()
-    return index_list
-
-def touch_boom():
-    mini_list = []
-    index_list = []
-    for i in range(const.NUM_OF_ROWS):
-        for j in range(const.NUM_OF_COLS):
-            if const.matrix[i][j] != const.BOOM and (const.matrix[i - 1][j] == const.BOOM or const.matrix[i][j + 1] == const.BOOM):
-                mini_list.append(i)
-                mini_list.append(j)
-        index_list.append(mini_list.copy())
-        mini_list.clear()
-    return index_list
+#
+# def touch_flag():
+#     mini_list = []
+#     index_list = []
+#     for i in range(const.NUM_OF_ROWS):
+#         for j in range(const.NUM_OF_COLS):
+#             if const.matrix[i][j] != const.FLAG and (const.matrix[i-1][j] == const.FLAG or const.matrix[i][j+1] == const.FLAG):
+#                 mini_list.append(i)
+#                 mini_list.append(j)
+#         index_list.append(mini_list.copy())
+#         mini_list.clear()
+#     return index_list
+#
+# def touch_boom():
+#     mini_list = []
+#     index_list = []
+#     for i in range(const.NUM_OF_ROWS):
+#         for j in range(const.NUM_OF_COLS):
+#             if const.matrix[i][j] != const.BOOM and (const.matrix[i - 1][j] == const.BOOM or const.matrix[i][j + 1] == const.BOOM):
+#                 mini_list.append(i)
+#                 mini_list.append(j)
+#         index_list.append(mini_list.copy())
+#         mini_list.clear()
+#     return index_list
