@@ -1,8 +1,8 @@
 import pygame
 import const
 import random
-
-
+import mainField
+import solider
 def grass_screen_stam():
     # FPS = 60
     # clock = pygame.time.Clock()
@@ -110,6 +110,7 @@ def grass_screen2():
     flag_img = pygame.image.load('flag.png').convert()
     flag_img.set_colorkey(const.BLACK)
     screen.blit(flag_img, (920, 528))
+
     pygame.display.flip()
     finish = False
     while not finish:
@@ -140,8 +141,21 @@ def grid_screen():
                 finish = True
 
 
-grass_screen2()
+grid_screen()
 
 
+def open_grid_screen():
+    if mainField.want_to_show_boom():
+        grid_screen()
 
 
+def win(screen):
+    if solider.step_on_flag():
+        win_text = const.TEXT_FONT.render("You win", 1, const.WHITE)
+        screen.blit(win_text, (300, 250))
+
+
+def loss(screen):
+    if solider.step_on_bomb():
+        loss_text = const.TEXT_FONT.render("You loss", 1, const.WHITE)
+        screen.blit(loss_text, (300, 250))
