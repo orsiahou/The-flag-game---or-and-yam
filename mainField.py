@@ -34,7 +34,10 @@ def put_boom(my_list):
 def solider_matrix():
     for i in range(4):
         for j in range(2):
-            const.solider_matrix[i][j] == const.SOLIDER
+            const.solider_matrix[i][j] = const.SOLIDER
+    print(solider_matrix)
+
+solider_matrix()
 
 def game_matrix(trees_list, boom_list):
     # put_trees(trees_list)
