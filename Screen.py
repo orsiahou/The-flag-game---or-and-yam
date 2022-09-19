@@ -102,7 +102,7 @@ def in_to_px(my_list):
 
 
 def move_solider(screen):
-    player_img = pygame.image.load('../player.png').convert()
+    player_img = pygame.image.load('player.png').convert()
     player_img.set_colorkey(const.BLACK)
     index = in_to_px(solider.where_solider()[0])
     screen.blit(player_img, (index[0], index[1]))
@@ -120,17 +120,18 @@ def losser(screen):
     injury_image.set_colorkey(const.BLACK)
     screen.blit(injury_image, (in_to_px(solider.where_solider()[0])[0], in_to_px(solider.where_solider()[0])[1]))
 
+mainField.solider_matrix()
 def grass_screen2(screen):
     # FPS = 60
     # clock = pygame.time.Clock()
     pygame.display.set_caption("The Flag Game")
     screen.fill(const.BACKGROUND_COLOR)
-    grass_img = pygame.image.load('../grassnew.png').convert()
+    grass_img = pygame.image.load('grassnew.png').convert()
     grass_img.set_colorkey(const.BLACK)
     input_grass(index_to_px(random_grass()), screen, grass_img)
     move_solider(screen)
     print_welcome_text(screen)
-    flag_img = pygame.image.load('../flag.png').convert()
+    flag_img = pygame.image.load('flag.png').convert()
     flag_img.set_colorkey(const.BLACK)
     screen.blit(flag_img, (920, 528))
 
@@ -143,16 +144,15 @@ def grass_screen2(screen):
                 finish = True
 
 
-
 def grid_screen():
     screen = pygame.display.set_mode(const.size)
     pygame.display.set_caption("The Flag Game")
     screen.fill(const.BLACK)
     print_table(screen)
-    bomb_img = pygame.image.load('../Bomb.png').convert()
+    bomb_img = pygame.image.load('Bomb.png').convert()
     bomb_img.set_colorkey(const.BLACK)
     input_grass(index_to_px(random_grass()), screen, bomb_img)
-    player2_img = pygame.image.load('../player2.png').convert()
+    player2_img = pygame.image.load('player2.png').convert()
     player2_img.set_colorkey(const.BLACK)
     screen.blit(player2_img, (0, 0))
     pygame.display.flip()
@@ -175,3 +175,30 @@ def loss(screen):
     if solider.step_on_bomb():
         loss_text = const.TEXT_FONT.render("You loss", 1, const.WHITE)
         screen.blit(loss_text, (300, 250))
+
+
+def screen_main():
+
+    finish_the_game = False
+    screen = pygame.display.set_mode(const.size)
+
+    mainField.solider_matrix()
+    grass_screen2(screen)
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RIGHT:
+                print('111')
+
+
+    solider.move()
+    if solider.step_on_bomb():
+        losser(screen)
+        loss(screen)
+        finish = True
+    if solider.step_on_flag():
+        win(screen)
+        finish = True
+    if mainField.want_to_show_boom():
+        grid_screen(screen)
+
+screen_main()

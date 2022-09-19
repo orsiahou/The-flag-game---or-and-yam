@@ -45,9 +45,9 @@ def game_matrix(trees_list, boom_list):
 def where_to_go():
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_END:
+            if event.key == pygame.K_RIGHT:
                 return const.RIGHT
-            elif event.key == pygame.K_HOME:
+            elif event.key == pygame.K_LEFT:
                 return const.LEFT
             elif event.key == pygame.K_UP:
                 return const.UP
