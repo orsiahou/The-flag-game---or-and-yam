@@ -5,6 +5,7 @@ import mainField
 import solider
 
 
+
 def grass_screen_stam():
     # FPS = 60
     # clock = pygame.time.Clock()
@@ -27,17 +28,42 @@ def random_grass():
     my_list = []
     small_list = []
     for i in range(20):
-        x = random.randint(0, 47)
-        y = random.randint(0, 23)
-        while x == 0 and (y == 0 or y == 1) or x == 1 and (y == 0 or y == 1):
-            x = random.randint(0, 47)
-            y = random.randint(0, 23)
+        x = random.randint(0, 23)
+        y = random.randint(0, 47)
+        while x == 0 and (y == 0 or y == 1) or x == 1 and (y == 0 or y == 1) or \
+                x == 2 and (y == 0 or y == 1) or x == 3 and (y == 0 or y == 1):
+            x = random.randint(0, 23)
+            y = random.randint(0, 47)
         while x == 22 and (y == 46 or y == 47 or y == 48 or y == 49) or \
                 x == 23 and (y == 46 or y == 47 or y == 48 or y == 49) \
                 or x == 24 and (y == 46 or y == 47 or y == 48 or y == 49):
-            x = random.randint(0, 47)
-            y = random.randint(0, 23)
+            x = random.randint(0, 23)
+            y = random.randint(0, 47)
         small_list.append(x)
+        small_list.append(y)
+        my_list.append(small_list.copy())
+        small_list.clear()
+    return my_list
+
+
+def random_boom():
+    my_list = []
+    small_list = []
+    for i in range(20):
+        x = random.randint(0, 23)
+        y = random.randint(0, 47)
+        while x == 0 and (y == 0 or y == 1) or x == 1 and (y == 0 or y == 1) or \
+                x == 2 and (y == 0 or y == 1) or x == 3 and (y == 0 or y == 1):
+            x = random.randint(0, 23)
+            y = random.randint(0, 47)
+        while x == 22 and (y == 46 or y == 47 or y == 48 or y == 49) or \
+                x == 23 and (y == 46 or y == 47 or y == 48 or y == 49) \
+                or x == 24 and (y == 46 or y == 47 or y == 48 or y == 49):
+            x = random.randint(0, 23)
+            y = random.randint(0, 47)
+        small_list.append(x)
+        small_list.append(x+1)
+        small_list.append(x+2)
         small_list.append(y)
         my_list.append(small_list.copy())
         small_list.clear()
@@ -58,7 +84,7 @@ def index_to_px(my_list):
 
 
 def input_grass(my_list, screen, grass_img):
-    for i in range(20):
+    for i in range(0, 20, 3):
         screen.blit(grass_img, [my_list[i][0], my_list[i][1]])
         pygame.display.flip()
 
@@ -122,7 +148,7 @@ def losser(screen):
     screen.blit(injury_image, (in_to_px(solider.where_solider()[0])[0], in_to_px(solider.where_solider()[0])[1]))
     pygame.display.flip()
 
-mainField.solider_matrix()
+
 def grass_screen2(screen, random_grass_list):
     # FPS = 60
     # clock = pygame.time.Clock()
@@ -155,6 +181,9 @@ def grid_screen(screen, random_boom_list):
     screen.blit(player2_img, (0, 0))
     pygame.display.flip()
     pygame.time.wait(1000)
+
+
+
 
 
 

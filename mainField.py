@@ -1,6 +1,7 @@
 import pygame
 import const
 
+
 def start_matrix():
     row = []
     matrix = []
@@ -27,7 +28,7 @@ def put_flag():
 
 
 def put_boom(my_list):
-    for i in range(len(my_list)):
+    for i in range(len(const.matrix)):
         row = my_list[i][0]
         col = my_list[i][1]
         for j in range(col, col + 3):
