@@ -98,10 +98,18 @@ def move_left():
 
 
 def move_up():
+<<<<<<< HEAD
     solider_index = where_solider()
     for i in range(2):
             const.solider_matrix[solider_index[i][0]][solider_index[i][1]] = const.EMPTY_CELL
             const.solider_matrix[solider_index[i][0] - 4][solider_index[i][1]] = const.SOLIDER
+=======
+    if where_solider()[1][0] > 0:
+        solider_index = where_solider()
+        for i in range(2):
+                const.solider_matrix[solider_index[i][0]][solider_index[i][1]] = const.EMPTY_CELL
+                const.solider_matrix[solider_index[i][0]-2][solider_index[i][1]] = const.SOLIDER
+>>>>>>> 5cfb47fc5b1fe515770cf180b12fc747b7a0a94b
 
 
 def move_down():
