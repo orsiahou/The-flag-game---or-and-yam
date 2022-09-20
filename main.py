@@ -21,7 +21,7 @@ while True:
             break
 
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RIGHT and solider.can_move_right():
+            if event.key == pygame.K_DOWN and solider.can_move_right():
                 screen.grass_screen2(_screen)
                 solider.move_right()
                 if solider.step_on_bomb():
@@ -32,7 +32,7 @@ while True:
                     screen.win(_screen)
                 else:
                     screen.move_solider(_screen)
-            elif event.key == pygame.K_LEFT and solider.can_move_left():
+            elif event.key == pygame.K_UP and solider.can_move_left():
                 solider.move_left()
                 if solider.step_on_bomb():
                     screen.move_solider(_screen)
@@ -42,7 +42,7 @@ while True:
                     screen.win(_screen)
                 else:
                     screen.move_solider(_screen)
-            elif event.key == pygame.K_UP:
+            elif event.key == pygame.K_LEFT:
                 solider.move_up()
                 if solider.step_on_bomb():
                     screen.move_solider(_screen)
@@ -52,7 +52,7 @@ while True:
                     screen.win(_screen)
                 else:
                     screen.move_solider(_screen)
-            elif event.key == pygame.K_DOWN:
+            elif event.key == pygame.K_RIGHT:
                 solider.move_down()
                 if solider.step_on_bomb():
                     screen.move_solider(_screen)

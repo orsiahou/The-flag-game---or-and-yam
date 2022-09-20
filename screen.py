@@ -102,7 +102,7 @@ def in_to_px(my_list):
 
 
 def move_solider(screen):
-    player_img = pygame.image.load('../player.png').convert()
+    player_img = pygame.image.load('player.png').convert()
     player_img.set_colorkey(const.BLACK)
     index = in_to_px(solider.where_solider()[0])
     screen.blit(player_img, (index[0], index[1]))
@@ -129,12 +129,12 @@ def grass_screen2(screen):
     random_list = index_to_px(random_grass())
     pygame.display.set_caption("The Flag Game")
     screen.fill(const.BACKGROUND_COLOR)
-    grass_img = pygame.image.load('../grassnew.png').convert()
+    grass_img = pygame.image.load('grassnew.png').convert()
     grass_img.set_colorkey(const.BLACK)
     input_grass(random_list, screen, grass_img)
     move_solider(screen)
     print_welcome_text(screen)
-    flag_img = pygame.image.load('../flag.png').convert()
+    flag_img = pygame.image.load('flag.png').convert()
     flag_img.set_colorkey(const.BLACK)
     screen.blit(flag_img, (920, 528))
 
@@ -149,7 +149,7 @@ def grid_screen():
     bomb_img = pygame.image.load('../Bomb.png').convert()
     bomb_img.set_colorkey(const.BLACK)
     input_grass(index_to_px(random_grass()), screen, bomb_img)
-    player2_img = pygame.image.load('../player2.png').convert()
+    player2_img = pygame.image.load('player2.png').convert()
     player2_img.set_colorkey(const.BLACK)
     screen.blit(player2_img, (0, 0))
     pygame.display.flip()
