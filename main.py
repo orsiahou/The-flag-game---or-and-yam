@@ -9,7 +9,7 @@ mainField.solider_matrix()
 random_grass_list = screen.random_grass()
 random_boom_list = screen.random_grass()
 screen.grass_screen2(_screen, random_grass_list)
-
+screen.move_solider(_screen)
 
 
 while True:
