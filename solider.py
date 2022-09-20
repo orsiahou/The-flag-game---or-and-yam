@@ -78,7 +78,7 @@ def move_up():
         solider_index = where_solider()
         for i in range(2):
                 const.solider_matrix[solider_index[i][0]][solider_index[i][1]] = const.EMPTY_CELL
-                const.solider_matrix[solider_index[i][0] - 4][solider_index[i][1]] = const.SOLIDER
+                const.solider_matrix[solider_index[i][0]-2][solider_index[i][1]] = const.SOLIDER
 
 
 def move_down():
